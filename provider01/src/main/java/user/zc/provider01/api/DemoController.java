@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import user.zc.provider01.service.DeptService;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController

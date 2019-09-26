@@ -75,6 +75,7 @@
         <module>eureka02</module>
         <module>provider01</module>
         <module>customer01</module>
+        <module>customer-ribbon</module>
     </modules>
 
     <build>
