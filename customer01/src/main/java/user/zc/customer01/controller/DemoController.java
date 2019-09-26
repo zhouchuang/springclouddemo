@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class DemoController {
-    private static final String REST_URL_PREFIX="http://PROVIDER01";
+    private static final String REST_URL_PREFIX="http://PROVIDER";
     @Autowired
     private RestTemplate restTemplate;
 

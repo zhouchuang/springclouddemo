@@ -23,7 +23,7 @@ public class ConfigBean {
      * @return
      */
     @Bean
-    @LoadBalanced
+    @LoadBalanced //ribbon实现的一套 ==客户端、负载均衡的工具
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }
@@ -33,6 +33,5 @@ public class ConfigBean {
         //用我们选择的随机算法
         return new RandomRule();
     }
-
 
 }

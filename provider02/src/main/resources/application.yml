@@ -1,13 +1,13 @@
 #客户端注册进eureka服务列表
 server:
-  port: 8001
+  port: 8002
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
   instance:
     #服务实例名称修改
-    instance-id: provider01
+    instance-id: provider02
     #访问路径显示IP地址
     prefer-ip-address: true
 spring:
@@ -45,7 +45,7 @@ management:
         include: "*"
 
 info:
-  app.name: provider01
+  app.name: provider02
   company.name: user.zc
   build.artifactId: ${project.artifactId}$
   build.version: ${project.version}$

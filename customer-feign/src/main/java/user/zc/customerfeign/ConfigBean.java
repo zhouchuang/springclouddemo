@@ -1,4 +1,4 @@
-package user.zc.customer_ribbon;
+package user.zc.customerfeign;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;

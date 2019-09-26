@@ -74,8 +74,11 @@
         <module>eureka01</module>
         <module>eureka02</module>
         <module>provider01</module>
+        <module>provider02</module>
         <module>customer01</module>
         <module>customer-ribbon</module>
+        <module>customer-feign</module>
+        <module>api</module>
     </modules>
 
     <build>
