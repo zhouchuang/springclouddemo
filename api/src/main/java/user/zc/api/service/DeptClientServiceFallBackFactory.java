@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author GongXings
+ * @author Zhouchuang
  * @createTime 31 14:52
  * @description 统一处理DeptClientService这个类中的熔断
  */
@@ -19,7 +19,7 @@ public class DeptClientServiceFallBackFactory implements FallbackFactory<DeptCli
             @Override
             public List list(){
                 System.out.println("触发降级了。。。");
-                return Arrays.asList("啥都没有吧,哈哈哈".split(","));
+                return Arrays.asList(("啥都没有吧,哈哈哈,"+throwable.getMessage()).split(","));
             }
         };
     }

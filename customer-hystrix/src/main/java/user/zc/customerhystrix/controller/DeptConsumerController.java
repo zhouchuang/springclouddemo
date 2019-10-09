@@ -1,7 +1,8 @@
 package user.zc.customerhystrix.controller;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+//import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import user.zc.api.service.DeptClientService;
@@ -18,9 +19,9 @@ public class DeptConsumerController {
 
     @Autowired
     private DeptClientService deptClientService;
-
-    @RequestMapping("/consumer/dept/list")
 //    @HystrixCommand(fallbackMethod = "listFail")
+
+    @GetMapping("/consumer/dept/list")
     public List list(){
         return  deptClientService.list();
     }
