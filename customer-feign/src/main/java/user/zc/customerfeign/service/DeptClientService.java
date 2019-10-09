@@ -1,4 +1,4 @@
-package user.zc.api.service;
+package user.zc.customerfeign.service;
 
 
 import org.springframework.cloud.netflix.feign.FeignClient;
@@ -12,8 +12,8 @@ import java.util.List;
  * @createTime 31 11:54
  * @description
  */
-@FeignClient(value = "PROVIDER",fallbackFactory = DeptClientServiceFallBackFactory.class)
+@FeignClient(value = "PROVIDER")
 public interface DeptClientService {
     @RequestMapping(value = "/dept/list",method = RequestMethod.GET)
-    public  List<String> list();
+    List<String> list();
 }

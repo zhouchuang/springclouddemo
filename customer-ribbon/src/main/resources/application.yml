@@ -5,4 +5,13 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
-    register-with-eureka: false
+    register-with-eureka: true #让eureka注册发现
+  instance:
+    #服务实例名称修改
+    instance-id: ribbon
+    #访问路径显示IP地址
+    prefer-ip-address: true
+
+spring:
+  application:
+    name: ribbon  #应用名称

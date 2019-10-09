@@ -1,6 +1,6 @@
 #客户端注册进eureka服务列表
 server:
-  port: 82
+  port: 83
 eureka:
   client:
     service-url:
@@ -8,10 +8,18 @@ eureka:
     register-with-eureka: true #ture 可以让eureka来注册发现
   instance:
     #服务实例名称修改
-    instance-id: feign
+    instance-id: hystrix
     #访问路径显示IP地址
     prefer-ip-address: true
 
+feign:
+  hystrix:
+    enable: ture
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 2000
 spring:
   application:
-    name: feign  #应用名称
+    name: hystrix  #应用名称

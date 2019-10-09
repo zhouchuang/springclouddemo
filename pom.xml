@@ -78,6 +78,7 @@
         <module>customer01</module>
         <module>customer-ribbon</module>
         <module>customer-feign</module>
+        <module>customer-hystrix</module>
         <module>api</module>
     </modules>
 
