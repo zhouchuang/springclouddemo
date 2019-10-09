@@ -67,6 +67,11 @@
                 <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
             </dependency>
+            <dependency>
+                <groupId>user.zc</groupId>
+                <artifactId>api</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -80,6 +85,8 @@
         <module>customer-feign</module>
         <module>customer-hystrix</module>
         <module>api</module>
+        <module>dashboard</module>
+        <module>provider-hystrix</module>
     </modules>
 
     <build>

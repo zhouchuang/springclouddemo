@@ -1,0 +1,63 @@
+server:
+  port: 8003
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
+  instance:
+    #服务实例名称修改
+    instance-id: provider-hystrix
+    #访问路径显示IP地址
+    prefer-ip-address: true
+spring:
+  application:
+    name: provider  #应用名称
+  datasource:
+    url: jdbc:mysql://211.149.210.215:3307/springclouddemo?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: sales
+    password: yskj@sales
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #druid连接池配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    # 配置监控统计拦截的filters,去掉监控界面sql无法统计，‘wall’用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    userGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+info:
+  app.name: provider-hystrix
+  company.name: user.zc
+  build.artifactId: ${project.artifactId}$
+  build.version: ${project.version}$
+
+#Mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: user.zc.entities
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名
+    cache-enabled: true #开启二级缓存
+
+
+
