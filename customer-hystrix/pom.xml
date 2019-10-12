@@ -17,6 +17,10 @@
             <groupId>user.zc</groupId>
             <artifactId>api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>user.zc</groupId>
+            <artifactId>api-tcc</artifactId>
+        </dependency>
         <!--Ribbon相关引用-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

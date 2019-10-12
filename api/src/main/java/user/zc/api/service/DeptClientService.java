@@ -3,8 +3,10 @@ package user.zc.api.service;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import user.zc.api.entities.Dept;
 
 import java.util.List;
 
@@ -17,4 +19,7 @@ import java.util.List;
 public interface DeptClientService {
     @GetMapping("/dept/list")
     public  List<String> list();
+
+    @PostMapping("/dept/update")
+    public  Integer update(Dept dept);
 }

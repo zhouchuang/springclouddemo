@@ -1,12 +1,18 @@
 package user.zc.customerhystrix.controller;
 
-//import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import user.zc.api.entities.Dept;
 import user.zc.api.service.DeptClientService;
+import user.zc.apitcc.entities.Logs;
+import user.zc.apitcc.service.LogsClientService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,12 +25,31 @@ public class DeptConsumerController {
 
     @Autowired
     private DeptClientService deptClientService;
+
+    @Autowired
+    private LogsClientService logsClientService;
 //    @HystrixCommand(fallbackMethod = "listFail")
 
     @GetMapping("/consumer/dept/list")
     public List list(){
         return  deptClientService.list();
     }
+
+    @GetMapping("/consumer/logs/list")
+    public List logs(){
+        return  logsClientService.list();
+    }
+
+
+    @GetMapping("/consumer/dept/update/{id}/{name}")
+    public Integer update(@PathVariable Long id ,@PathVariable String name){
+        Dept dept = new Dept(id,name);
+        Integer flag = deptClientService.update(dept);
+        String str = JSON.toJSONString(dept);
+        logsClientService.insert(new Logs(1L,"Update",str,new Date(),dept.getClass().getSimpleName() ));
+        return flag;
+    }
+
 
     private List<String> listFail(){
         System.out.println("controller服务降级了");

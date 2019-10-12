@@ -4,10 +4,8 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import user.zc.api.entities.Dept;
 import user.zc.providerhystrix.service.DeptService;
 
 import java.util.Arrays;
@@ -41,11 +39,22 @@ public class DemoController {
         List<String> list = null;
         try {
             list = deptService.list();
-            list.add("provider-hystrix");
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
+    }
+
+
+    @RequestMapping(value = "/dept/update",method = RequestMethod.POST)
+    public Integer update(@RequestBody Dept dept){
+        try {
+            Integer num = deptService.update(dept);
+            return num;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public Object listFail(){

@@ -11,9 +11,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients(basePackages ={"user.zc.api"})
-@ComponentScan(basePackages = {"user.zc.api","user.zc.customerhystrix"})
-//@EnableCircuitBreaker
+@EnableFeignClients(basePackages ={"user.zc.api","user.zc.apitcc"})
+@ComponentScan(basePackages = {"user.zc.api","user.zc.apitcc","user.zc.customerhystrix"})
 
 public class CustomerHystrixApplication {
 
