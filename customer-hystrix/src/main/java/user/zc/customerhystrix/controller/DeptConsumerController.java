@@ -29,9 +29,6 @@ public class DeptConsumerController {
     private DeptClientService deptClientService;
 
     @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
     private LogsClientService logsClientService;
 //    @HystrixCommand(fallbackMethod = "listFail")
 
