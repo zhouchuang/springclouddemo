@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Logs {
     private Long id;
@@ -15,4 +14,12 @@ public class Logs {
     private String json;
     private Date time;
     private String tablename;
+
+    public Logs(Long id, String type, String json, Date time, String tablename) {
+        this.id = id;
+        this.type = type;
+        this.json = json;
+        this.time = time;
+        this.tablename = tablename;
+    }
 }

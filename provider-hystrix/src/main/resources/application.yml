@@ -48,8 +48,8 @@ management:
 info:
   app.name: provider-hystrix
   company.name: user.zc
-  build.artifactId: ${project.artifactId}$
-  build.version: ${project.version}$
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
 
 #Mybatis配置
 mybatis:

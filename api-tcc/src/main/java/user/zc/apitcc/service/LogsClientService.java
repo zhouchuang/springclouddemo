@@ -19,5 +19,5 @@ public interface LogsClientService {
     public  List<Logs> list();
 
     @PostMapping("/logs/insert")
-    public  Integer insert(Logs logs);
+    public  Boolean insert(Logs logs);
 }

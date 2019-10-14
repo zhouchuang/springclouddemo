@@ -1,6 +1,7 @@
 package user.zc.api.service;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,5 +22,5 @@ public interface DeptClientService {
     public  List<String> list();
 
     @PostMapping("/dept/update")
-    public  Integer update(Dept dept);
+    public Integer update(Dept dept);
 }

@@ -7,8 +7,10 @@ import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import user.zc.api.entities.Dept;
 import user.zc.api.service.DeptClientService;
+import user.zc.api.util.SnowFlake;
 import user.zc.apitcc.entities.Logs;
 import user.zc.apitcc.service.LogsClientService;
 
@@ -25,6 +27,9 @@ public class DeptConsumerController {
 
     @Autowired
     private DeptClientService deptClientService;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Autowired
     private LogsClientService logsClientService;
@@ -44,10 +49,11 @@ public class DeptConsumerController {
     @GetMapping("/consumer/dept/update/{id}/{name}")
     public Integer update(@PathVariable Long id ,@PathVariable String name){
         Dept dept = new Dept(id,name);
-        Integer flag = deptClientService.update(dept);
-        String str = JSON.toJSONString(dept);
-        logsClientService.insert(new Logs(1L,"Update",str,new Date(),dept.getClass().getSimpleName() ));
-        return flag;
+        return  deptClientService.update(dept);
+//        String str = JSON.toJSONString(dept);
+//        Boolean flag2 = logsClientService.insert(new Logs(SnowFlake.getId(),"Update",str,new Date(),dept.getClass().getSimpleName() ));
+//        return 1;
+
     }
 
 

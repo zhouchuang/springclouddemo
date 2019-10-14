@@ -18,7 +18,7 @@ public class LogsService {
     }
 
     @Transactional
-    public Integer insert(Logs logs)throws Exception{
+    public Boolean insert(Logs logs)throws Exception{
         return deptDao.insert(logs);
     }
 }

@@ -48,8 +48,8 @@ management:
 info:
   app.name: provider-hystrix-tcc
   company.name: user.zc
-  build.artifactId: ${project.artifactId}$
-  build.version: ${project.version}$
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
 
 #Mybatis配置
 mybatis:
@@ -62,7 +62,7 @@ mybatis:
 #打印sql到控制台
 logging:
   level:
-    user.zc.providerhystrix.dao : debug
+    user.zc.providerhystrixtcc.dao : debug
     org:
       springframework:
         web:

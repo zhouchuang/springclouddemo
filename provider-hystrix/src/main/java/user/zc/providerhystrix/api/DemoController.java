@@ -23,7 +23,7 @@ public class DemoController {
     @RequestMapping(value = "/dept/discovery",method = RequestMethod.GET)
     public Object discovery(){
         List<String> list = discoveryClient.getServices();
-        List<ServiceInstance> instances = discoveryClient.getInstances("provider01".toUpperCase());
+        List<ServiceInstance> instances = discoveryClient.getInstances("provider".toUpperCase());
         for (ServiceInstance element :instances){
             System.out.println(element.getServiceId());
             System.out.println(element.getHost());
@@ -47,10 +47,9 @@ public class DemoController {
 
 
     @RequestMapping(value = "/dept/update",method = RequestMethod.POST)
-    public Integer update(@RequestBody Dept dept){
+    public Object update(@RequestBody Dept dept){
         try {
-            Integer num = deptService.update(dept);
-            return num;
+            return deptService.update(dept);
         } catch (Exception e) {
             e.printStackTrace();
         }

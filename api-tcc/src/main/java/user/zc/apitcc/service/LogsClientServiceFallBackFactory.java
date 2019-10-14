@@ -4,7 +4,6 @@ import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 import user.zc.apitcc.entities.Logs;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,9 +23,9 @@ public class LogsClientServiceFallBackFactory implements FallbackFactory<LogsCli
             }
 
             @Override
-            public Integer insert(Logs logs) {
-                System.out.println("update触发降级了："+throwable.getMessage());
-                return -2;
+            public Boolean insert(Logs logs) {
+                System.out.println("insert触发降级了："+throwable.getMessage());
+                return Boolean.FALSE;
             }
         };
     }
