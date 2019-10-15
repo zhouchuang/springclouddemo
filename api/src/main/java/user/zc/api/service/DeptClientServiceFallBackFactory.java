@@ -24,6 +24,12 @@ public class DeptClientServiceFallBackFactory implements FallbackFactory<DeptCli
             }
 
             @Override
+            public List<Object> logslist() {
+                System.out.println("logslist触发降级了："+throwable.getMessage());
+                return null;
+            }
+
+            @Override
             public Integer update(Dept dept) {
                 System.out.println("update触发降级了："+throwable.getMessage());
                 return -2;

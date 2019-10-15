@@ -21,6 +21,9 @@ public interface DeptClientService {
     @GetMapping("/dept/list")
     public  List<String> list();
 
+    @GetMapping("/logs/list")
+    public  List<Object> logslist();
+
     @PostMapping("/dept/update")
     public Integer update(Dept dept);
 }

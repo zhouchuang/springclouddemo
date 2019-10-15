@@ -7,6 +7,8 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import user.zc.apitcc.entities.Logs;
 import user.zc.providerhystrixtcc.service.LogsService;
+
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -42,6 +44,11 @@ public class DemoController {
         }
         return list;
     }
+    @RequestMapping(value = "/dept/list",method = RequestMethod.GET)
+    public Object logslist(){
+        return Arrays.asList("我是LogsFeign,我是假的".split(","));
+    }
+
 
 
     @RequestMapping(value = "/logs/insert",method = RequestMethod.POST)

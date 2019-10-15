@@ -45,6 +45,11 @@ public class DemoController {
         return list;
     }
 
+    @RequestMapping(value = "/logs/list",method = RequestMethod.GET)
+    public Object logslist(){
+        return Arrays.asList("我是DeptFeign".split(","));
+    }
+
 
     @RequestMapping(value = "/dept/update",method = RequestMethod.POST)
     public Object update(@RequestBody Dept dept){

@@ -18,6 +18,10 @@ public interface LogsClientService {
     @GetMapping("/logs/list")
     public  List<Logs> list();
 
+    @GetMapping("/dept/list")
+    public  List<String> deptlist();
+
+
     @PostMapping("/logs/insert")
     public  Boolean insert(Logs logs);
 }

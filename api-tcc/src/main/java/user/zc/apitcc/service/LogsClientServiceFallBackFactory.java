@@ -23,6 +23,12 @@ public class LogsClientServiceFallBackFactory implements FallbackFactory<LogsCli
             }
 
             @Override
+            public List<String> deptlist() {
+                System.out.println("deptlist触发降级了："+throwable.getMessage());
+                return null;
+            }
+
+            @Override
             public Boolean insert(Logs logs) {
                 System.out.println("insert触发降级了："+throwable.getMessage());
                 return Boolean.FALSE;
