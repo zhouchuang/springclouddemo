@@ -15,9 +15,10 @@
  */
 package user.zc.txmanage;
 
-import user.zc.txmanage.support.TxLcnManagerBanner;
+import com.codingapi.txlcn.tm.config.EnableTransactionManagerServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * Description:
@@ -27,11 +28,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author lorne
  */
 @SpringBootApplication
+@EnableEurekaClient
+@EnableTransactionManagerServer
+//@EnableAutoConfiguration(exclude = {DruidDataSourceAutoConfigure.class})
 public class TMApplication {
 
     public static void main(String[] args) {
-        SpringApplication springApplication = new SpringApplication(TMApplication.class);
-        springApplication.setBanner(new TxLcnManagerBanner());
-        springApplication.run(args);
+        SpringApplication.run(TMApplication.class, args);
     }
 }

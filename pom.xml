@@ -98,6 +98,7 @@
         <module>customer-feign</module>
         <module>customer-hystrix</module>
         <module>api</module>
+        <module>api-tcc</module>
         <module>dashboard</module>
         <module>provider-hystrix</module>
         <module>provider-hystrix-tcc</module>

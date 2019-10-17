@@ -1,5 +1,6 @@
 package user.zc.apitcc.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,8 @@ public class Logs {
     private String json;
     private Date time;
     private String tablename;
+
+
 
     public Logs(Long id, String type, String json, Date time, String tablename) {
         this.id = id;

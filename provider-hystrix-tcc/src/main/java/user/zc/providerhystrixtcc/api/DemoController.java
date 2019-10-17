@@ -44,12 +44,6 @@ public class DemoController {
         }
         return list;
     }
-    @RequestMapping(value = "/dept/list",method = RequestMethod.GET)
-    public Object logslist(){
-        return Arrays.asList("我是LogsFeign,我是假的".split(","));
-    }
-
-
 
     @RequestMapping(value = "/logs/insert",method = RequestMethod.POST)
     public Boolean insert(@RequestBody Logs logs){
