@@ -1,0 +1,42 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: springcloud-zuul-gateway
+management:
+  security:
+    enabled: false  # 默认值是 true, 为true的话那么页面上可能会报没有权限访问
+eureka:
+  instance:
+    instance-id: gateway-9572
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
+ribbon:
+  eureka:
+    enabled: false
+zuul:
+  ignored-services: "*"
+  routes:
+    product-provider: #通过地址过滤
+      path: /baidu/**
+      url: http://www.baidu.com/
+    product: #映射路由
+      path: /api/**
+      serviceId: hystrix
+    londbalance:  #负载均衡
+      path: /lb/**
+      serviceId: lb
+  prefix: /zhouchuang
+
+lb:
+  ribbon:
+    listOfServers: http://www.baidu.com,http://www.bilibili.com
+
+
+info:
+  app.name: springcloud-zuul-gateway
+  company.name: www.jianzhipt.cn
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}

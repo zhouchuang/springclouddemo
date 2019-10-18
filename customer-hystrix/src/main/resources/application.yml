@@ -19,13 +19,13 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
-    register-with-eureka: false #ture 可以让eureka来注册发现
-#  instance:
-#    #服务实例名称修改
-#    instance-id: hystrix
-#    #访问路径显示IP地址
-#    prefer-ip-address: true
-#
-#spring:
-#  application:
-#    name: hystrix  #应用名称
+    register-with-eureka: true #ture 可以让eureka来注册发现
+  instance:
+    #服务实例名称修改
+    instance-id: hystrix
+    #访问路径显示IP地址
+    prefer-ip-address: true
+
+spring:
+  application:
+    name: hystrix  #应用名称
