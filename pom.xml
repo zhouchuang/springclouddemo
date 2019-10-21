@@ -102,6 +102,7 @@
         <module>dashboard</module>
         <module>provider-hystrix</module>
         <module>provider-hystrix-tcc</module>
+        <module>tx-manager</module>
     </modules>
 
     <build>

@@ -68,4 +68,5 @@ logging:
         web:
           servlet: ERROR
     root: INFO
-
+    user:
+      zc: DEBUG

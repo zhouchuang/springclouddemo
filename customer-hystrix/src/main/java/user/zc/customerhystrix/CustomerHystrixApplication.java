@@ -1,5 +1,6 @@
 package user.zc.customerhystrix;
 
+import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableFeignClients(basePackages ={"user.zc.api","user.zc.apitcc"})
 @ComponentScan(basePackages = {"user.zc.api","user.zc.apitcc","user.zc.customerhystrix"})
 @RibbonClient(name="PROVIDERTCC",configuration = MyRuleConfig.class)
+@EnableDistributedTransaction
 public class CustomerHystrixApplication {
 
     public static void main(String[] args) {

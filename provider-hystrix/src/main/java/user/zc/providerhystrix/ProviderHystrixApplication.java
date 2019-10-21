@@ -1,6 +1,5 @@
 package user.zc.providerhystrix;
 
-import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableDiscoveryClient //服务发现
 @EnableCircuitBreaker//对hystrixR熔断机制的支持
 @EnableTransactionManagement(proxyTargetClass = true)
-@EnableDistributedTransaction
 public class ProviderHystrixApplication {
 
     public static void main(String[] args) {

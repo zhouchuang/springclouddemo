@@ -29,3 +29,23 @@ eureka:
 spring:
   application:
     name: hystrix  #应用名称
+  datasource:
+    url: jdbc:mysql://211.149.210.215:3307/springclouddemo?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: sales
+    password: yskj@sales
+    driver-class-name: com.mysql.jdbc.Driver
+
+# TM客户端配置
+tx-lcn:
+  ribbon:
+    loadbalancer:
+      dtx:
+        enabled: true # 是否启动LCN负载均衡策略(优化选项，开启与否，功能不受影响)
+  client:
+    address: 127.0.0.1:8070
+  logger:
+    enabled: true
+    driver-class-name: ${spring.datasource.driver-class-name}
+    jdbc-url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
