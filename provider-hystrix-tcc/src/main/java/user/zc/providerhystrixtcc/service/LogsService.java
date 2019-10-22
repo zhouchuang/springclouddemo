@@ -1,5 +1,7 @@
 package user.zc.providerhystrixtcc.service;
 
+import com.codingapi.txlcn.tc.annotation.DTXPropagation;
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +19,12 @@ public class LogsService {
         return deptDao.logslist();
     }
 
-    @Transactional
-    public Boolean insert(Logs logs)throws Exception{
-        return deptDao.insert(logs);
+
+    @LcnTransaction(propagation = DTXPropagation.SUPPORTS) //分布式事务注解
+    @Transactional(rollbackFor=Exception.class)
+    public Boolean insert(Logs logs){
+        boolean flag =  deptDao.insert(logs);
+        int i = 1/0;
+        return flag;
     }
 }

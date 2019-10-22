@@ -81,18 +81,11 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
 
-        <!-- 分布式事务 -->
+        <!-- 分布式事务-->
         <dependency>
-            <groupId>com.codingapi.txlcn</groupId>
-            <artifactId>txlcn-tc</artifactId>
-            <version>5.0.2.RELEASE</version>
+            <groupId>user.zc</groupId>
+            <artifactId>dist-transaction</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.codingapi.txlcn</groupId>
-            <artifactId>txlcn-txmsg-netty</artifactId>
-            <version>5.0.2.RELEASE</version>
-        </dependency>
-
 
     </dependencies>
 

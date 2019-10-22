@@ -1,9 +1,9 @@
 package user.zc.providerhystrix.service;
 
+import com.codingapi.txlcn.tc.annotation.DTXPropagation;
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import user.zc.api.entities.Dept;
 import user.zc.providerhystrix.dao.DeptDao;
@@ -19,9 +19,9 @@ public class DeptService {
         return deptDao.deptlist();
     }
 
-//    @Transactional(isolation = Isolation.REPEATABLE_READ, propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
+    @LcnTransaction(propagation = DTXPropagation.SUPPORTS) //分布式事务注解
     @Transactional
-    public Integer update(Dept dept)throws Exception{
+    public Integer update(Dept dept){
         return deptDao.update(dept);
     }
 }

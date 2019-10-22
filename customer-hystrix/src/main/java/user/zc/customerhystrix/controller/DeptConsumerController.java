@@ -14,17 +14,21 @@ import user.zc.api.service.DeptClientService;
 import user.zc.api.util.SnowFlake;
 import user.zc.apitcc.entities.Logs;
 import user.zc.apitcc.service.LogsClientService;
+import user.zc.customerhystrix.service.DeptService;
 
 import java.util.Date;
 import java.util.List;
 
 /**
- * @author GongXings
+ * @author Zhouchuang
  * @createTime 30 15:48
  * @description
  */
 @RestController
 public class DeptConsumerController {
+
+    @Autowired
+    private DeptService deptService;
 
     @Autowired
     private DeptClientService deptClientService;
@@ -46,11 +50,12 @@ public class DeptConsumerController {
 
     @GetMapping("/consumer/dept/update/{id}/{name}")
     public Integer update(@PathVariable Long id ,@PathVariable String name){
-        Dept dept = new Dept(id,name);
+       /* Dept dept = new Dept(id,name);
         Integer flag = deptClientService.update(dept);
         String str = JSON.toJSONString(dept);
         Boolean flag2 = logsClientService.insert(new Logs(SnowFlake.getId(),"Update",str,new Date(),dept.getClass().getSimpleName() ));
-        return flag;
+        return flag;*/
+       return deptService.update(id,name);
     }
 
 

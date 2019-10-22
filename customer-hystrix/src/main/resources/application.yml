@@ -29,3 +29,40 @@ eureka:
 spring:
   application:
     name: hystrix  #应用名称
+  datasource:
+    url: jdbc:mysql://211.149.210.215:3307/springclouddemologs?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: sales
+    password: yskj@sales
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    database: 0
+    host: 211.149.210.215
+    port: 6379
+    password: hnyskj@xzh2018
+    pool:
+      max-active: 600
+      max-idle: 300
+      max-wait: -1
+      min-idle: 0
+      timeout: 1000
+
+# tx-manager 配置  如果是默认的，则不需要填写
+tx-lcn:
+  client:
+    manager-address: 127.0.0.1:8070
+#  ribbon:
+#    loadbalancer:
+#      dtx:
+#        enabled: true # 是否启动LCN负载均衡策略(优化选项，开启与否，功能不受影响)
+  logger:
+    enabled: true
+    driver-class-name: ${spring.datasource.driver-class-name}
+    jdbc-url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+
+logging:
+  level:
+    com:
+      codingapi:
+        txlcn: DEBUG

@@ -47,12 +47,7 @@ public class DemoController {
 
     @RequestMapping(value = "/dept/update",method = RequestMethod.POST)
     public Object update(@RequestBody Dept dept){
-        try {
-            return deptService.update(dept);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return -1;
+        return deptService.update(dept);
     }
 
     public Object listFail(){
