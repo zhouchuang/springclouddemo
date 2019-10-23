@@ -25,16 +25,16 @@ public class DeptService {
 
     @LcnTransaction
     @Transactional
-    public Integer update(Long id , String name) {
+    public Integer update(Long id , String name,Boolean flag) {
         Dept dept = new Dept(id,name);
-        Integer flag = deptClientService.update(dept);
+        Integer num = deptClientService.update(dept);
         String str = JSON.toJSONString(dept);
+        Boolean flag3 = logsClientService.tcctest(new Logs(SnowFlake.getId(),"TccTest",str,new Date(),dept.getClass().getSimpleName() ));
         Boolean flag2 = logsClientService.insert(new Logs(SnowFlake.getId(),"Update",str,new Date(),dept.getClass().getSimpleName() ));
-        if(flag2){
+        if( false==flag2 || flag3==false || flag == false ){
             throw  new IllegalStateException("插入异常");
         }else{
-            return flag;
+            return num;
         }
-
     }
 }

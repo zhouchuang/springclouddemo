@@ -48,14 +48,14 @@ public class DeptConsumerController {
     }
 
 
-    @GetMapping("/consumer/dept/update/{id}/{name}")
-    public Integer update(@PathVariable Long id ,@PathVariable String name){
-       /* Dept dept = new Dept(id,name);
-        Integer flag = deptClientService.update(dept);
-        String str = JSON.toJSONString(dept);
-        Boolean flag2 = logsClientService.insert(new Logs(SnowFlake.getId(),"Update",str,new Date(),dept.getClass().getSimpleName() ));
-        return flag;*/
-       return deptService.update(id,name);
+    @GetMapping("/consumer/dept/update/{id}/{name}/{flag}")
+    public Integer update(@PathVariable Long id ,@PathVariable String name,@PathVariable Boolean flag){
+        try {
+            return deptService.update(id,name,flag);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
 
