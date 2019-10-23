@@ -24,7 +24,7 @@ spring:
     #druid连接池配置
     initialSize: 5
     minIdle: 5
-    maxActive: 20
+    maxActive: 50
     maxWait: 60000
     timeBetweenEvictionRunsMillis: 60000
     minEvictableIdleTimeMillis: 300000

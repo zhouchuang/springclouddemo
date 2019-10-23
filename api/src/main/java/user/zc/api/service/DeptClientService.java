@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import user.zc.api.entities.Dept;
+import user.zc.api.entities.Ticket;
 
 import java.util.List;
 
@@ -23,4 +24,7 @@ public interface DeptClientService {
 
     @PostMapping("/dept/update")
     public Integer update(Dept dept);
+
+    @PostMapping("/ticket/save")
+    public Integer ticketSave(Ticket ticket);
 }

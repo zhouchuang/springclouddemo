@@ -3,6 +3,7 @@ package user.zc.api.service;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 import user.zc.api.entities.Dept;
+import user.zc.api.entities.Ticket;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +27,12 @@ public class DeptClientServiceFallBackFactory implements FallbackFactory<DeptCli
             @Override
             public Integer update(Dept dept) {
                 System.out.println("update触发降级了："+throwable.getMessage());
+                return -2;
+            }
+
+            @Override
+            public Integer ticketSave(Ticket ticket) {
+                System.out.println("ticketSave触发降级了："+throwable.getMessage());
                 return -2;
             }
         };
