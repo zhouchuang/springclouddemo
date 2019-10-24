@@ -24,17 +24,17 @@ public class ConfigBean {
      * 提供了多种访问http服务的方法，
      * 针对于访问rest服务<strong>客户端</strong>的调用的模板类
      */
-//    @Bean
-////    @LoadBalanced //ribbon实现的一套 ==客户端、负载均衡的工具
-////    public  RestTemplate getRestTemplate(){
-////        return new RestTemplate();
-////    }
-////
-////    @Bean
-////    public IRule myRule(){
-////        //用我们选择的随机算法
-////        return new RandomRule();
-////    }
+    @Bean
+    @LoadBalanced //ribbon实现的一套 ==客户端、负载均衡的工具
+    public  RestTemplate getRestTemplate(){
+        return new RestTemplate();
+    }
+
+    @Bean
+    public IRule myRule(){
+        //用我们选择的随机算法
+        return new RandomRule();
+    }
 
 
     //序列号改为fastjson

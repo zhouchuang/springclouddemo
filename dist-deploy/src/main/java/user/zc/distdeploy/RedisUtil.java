@@ -32,18 +32,18 @@ public class RedisUtil {
     public static  RedisService getRedisService(){
         return  redisUtil.redisService;
     }
-    public  static String get(String key){
+    public  static Object get(String key){
         Object obj  = redisUtil.redisService.get(key);
         if(obj!=null) {
-            return (String)obj;
+            return obj;
         } else {
             return  null;
         }
     }
-    public  static void set(String key,String value,Long time){
+    public  static void set(String key,Object value,Long time){
         redisUtil.redisService.set(key,value,time);
     }
-    public  static void set(String key,String value){
+    public  static void set(String key,Object value){
         redisUtil.redisService.set(key,value);
     }
     public static void del(String key){

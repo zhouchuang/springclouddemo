@@ -12,6 +12,7 @@ import user.zc.api.service.DeptClientService;
 import user.zc.api.util.SnowFlake;
 import user.zc.apitcc.entities.Logs;
 import user.zc.apitcc.service.LogsClientService;
+import user.zc.distdeploy.RedisUtil;
 
 import java.util.Date;
 
@@ -44,5 +45,12 @@ public class DeptService {
     public Integer ticketSave(Integer no ,String ip){
         Ticket ticket = new Ticket(SnowFlake.getId(),ip,no,new Date());
         return  deptClientService.ticketSave(ticket);
+    }
+
+    @Async
+    public void ticketSaveCache(Integer no ,String ip){
+        Ticket ticket = new Ticket(SnowFlake.getId(),ip,no,new Date());
+        RedisUtil.pushTask(ticket);
+        RedisUtil.broadcast("TicketSubscribe");
     }
 }

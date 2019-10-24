@@ -5,6 +5,8 @@ server:
 ribbon:
   eureka:
     enabled: true
+  ConnectTimeout: 30000
+  ReadTimeout: 30000
 
 feign:
   hystrix:
@@ -36,16 +38,17 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   redis:
     database: 0
-    host: 211.149.210.215
+    host: 127.0.0.1
     port: 6379
-    password: hnyskj@xzh2018
+    password: 123456
     pool:
       max-active: 600
       max-idle: 300
       max-wait: -1
       min-idle: 0
       timeout: 1000
-
+  aop:
+    proxy-target-class: true
 # tx-manager 配置  如果是默认的，则不需要填写
 tx-lcn:
   client:

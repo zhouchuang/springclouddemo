@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import user.zc.api.service.DeptClientService;
 import user.zc.apitcc.service.LogsClientService;
 import user.zc.customerhystrix.Tools;
+import user.zc.customerhystrix.intercepted.Limit;
 import user.zc.customerhystrix.service.DeptService;
 import user.zc.distdeploy.RedisUtil;
 
@@ -57,15 +58,16 @@ public class DeptConsumerController {
     }
 
     @GetMapping("/consumer/redis/set/{key}/{value}")
-    public String set(@PathVariable String key,@PathVariable String value){
+    public Object set(@PathVariable String key,@PathVariable Integer value){
         RedisUtil.set(key,value);
         return RedisUtil.get(key);
     }
     @GetMapping("/consumer/redis/get/{key}")
-    public String set(@PathVariable String key){
+    public Object set(@PathVariable String key){
         return RedisUtil.get(key);
     }
 
+    @Limit(limitNum=100)
     @GetMapping("/consumer/buy")
     public String buy(HttpServletRequest request){
         String key = "goods";
@@ -74,25 +76,20 @@ public class DeptConsumerController {
            @Override
            public String execute(RedisOperations operations) throws DataAccessException {
                List<Object> result = null;
-               int num = 0;
+               int count = 0;
                do {
-                   int count = 0;
                    operations.watch(key);  // watch某个key,当该key被其它客户端改变时,则会中断当前的操作
-                   String value = (String) operations.opsForValue().get(key);
-                   if (!StringUtils.isEmpty(value)) {
-                       count = Integer.parseInt(value);
-                   }
+                   count = (Integer) operations.opsForValue().get(key);
                    if(count>0){
-                       count = count - 1;
                        operations.multi(); //开始事务
                        operations.delete(key);
-                       operations.opsForValue().set(key, String.valueOf(count));
+                       operations.opsForValue().set(key, --count);
+//                       operations.opsForValue().increment(key,-1);
                        try {
                            result = operations.exec(); //提交事务
                            operations.unwatch();  //提交事务后，key再被改变不用管了，反正我提交了
                            if(result.size()>0){
-                               num = count+1;
-                               deptService.ticketSave(num,Tools.getIpAddress(request));
+                               deptService.ticketSaveCache(count+1,Tools.getIpAddress(request));
                            }
                        } catch (Exception e) { //如果key被改变,提交事务时这里会报异常
                            e.printStackTrace();
@@ -103,7 +100,7 @@ public class DeptConsumerController {
                        return "没有票了啊";
                    }
                } while (result == null||result.size()==0); //如果失败则重试
-               return "抢到了第"+num+"张票";
+               return "抢到了第"+(count+1)+"张票";
            }
         });
         return msg;

@@ -127,6 +127,7 @@
         <module>api-tcc</module>
         <module>dashboard</module>
         <module>provider-hystrix</module>
+        <module>provider-hystrix-01</module>
         <module>provider-hystrix-tcc</module>
         <module>zuul</module>
         <module>dist-deploy</module>

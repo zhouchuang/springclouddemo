@@ -1,9 +1,7 @@
 package user.zc.providerhystrix;
 
-import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -13,9 +11,8 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.listener.PatternTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import user.zc.api.entities.Ticket;
-import user.zc.providerhystrix.service.DeptService;
 import user.zc.providerhystrix.subscribe.TicketSubscribe;
+import user.zc.providerhystrix.subscribe.TicketSubscribeFactory;
 
 @SpringBootApplication
 @EnableEurekaClient //本服务启动后会自动注册进eureka服务中
@@ -39,7 +36,7 @@ public class ProviderHystrixApplication {
         /**
          * 添加订阅者监听类，数量不限.PatternTopic定义监听主题,这里监听BroadcastTask主题
          */
-        container.addMessageListener(new TicketSubscribe(), new PatternTopic(TicketSubscribe.class.getSimpleName()));
+        container.addMessageListener(TicketSubscribeFactory.create(), new PatternTopic(TicketSubscribe.class.getSimpleName()));
         return container;
 
     }

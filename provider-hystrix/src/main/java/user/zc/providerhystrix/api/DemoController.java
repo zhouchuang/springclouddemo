@@ -7,7 +7,6 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import user.zc.api.entities.Dept;
 import user.zc.api.entities.Ticket;
-import user.zc.distdeploy.RedisUtil;
 import user.zc.providerhystrix.service.DeptService;
 
 import java.util.Arrays;

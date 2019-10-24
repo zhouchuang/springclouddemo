@@ -1,5 +1,5 @@
 server:
-  port: 8003
+  port: 8005
 
 
 eureka:
@@ -8,7 +8,7 @@ eureka:
       defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
   instance:
     #服务实例名称修改
-    instance-id: provider-hystrix
+    instance-id: provider-hystrix-01
     #访问路径显示IP地址
     prefer-ip-address: true
 spring:
@@ -57,7 +57,7 @@ management:
         include: "*"
 
 info:
-  app.name: provider-hystrix
+  app.name: provider-hystrix-01
   company.name: user.zc
   build.artifactId: ${project.artifactId}
   build.version: ${project.version}
@@ -74,7 +74,7 @@ mybatis:
 logging:
   level:
     com.codingapi.txlcn: DEBUG
-    user.zc.providerhystrix.dao : debug
+    user.zc.providerhystrix01.dao : debug
     org:
       springframework:
         web:
