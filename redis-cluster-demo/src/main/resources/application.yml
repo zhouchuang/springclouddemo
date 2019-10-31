@@ -1,0 +1,21 @@
+server:
+  port: 85
+
+
+spring:
+  application:
+    name: redis-cluster  #应用名称
+  redis:
+    password: 123456 #密码
+    database: 0
+    cluster:
+      nodes: 127.0.0.1:6379,127.0.0.1:6380
+      max-redirects: 6
+    jedis:
+      pool:
+        max-active: 300
+        max-wait: -1 #没有限制
+        max-idle: 100
+        min-idle: 20
+    timeout: 0 #毫秒
+    commandTimeout: 5000

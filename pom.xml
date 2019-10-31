@@ -131,6 +131,7 @@
         <module>provider-hystrix-tcc</module>
         <module>zuul</module>
         <module>dist-deploy</module>
+        <module>redis-cluster-demo</module>
     </modules>
 
     <build>

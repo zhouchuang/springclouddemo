@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.SessionCallback;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import user.zc.api.service.DeptClientService;
 import user.zc.apitcc.service.LogsClientService;
@@ -15,7 +14,6 @@ import user.zc.customerhystrix.service.DeptService;
 import user.zc.distdeploy.RedisUtil;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +33,7 @@ public class DeptConsumerController {
     @Autowired
     private LogsClientService logsClientService;
 //    @HystrixCommand(fallbackMethod = "listFail")
+
 
     @GetMapping("/consumer/dept/list")
     public List list(){
