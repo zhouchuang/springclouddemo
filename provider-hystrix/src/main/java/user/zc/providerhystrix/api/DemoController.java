@@ -6,6 +6,7 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 import user.zc.api.entities.Dept;
+import user.zc.api.entities.Ticket;
 import user.zc.providerhystrix.service.DeptService;
 
 import java.util.Arrays;
@@ -47,12 +48,16 @@ public class DemoController {
 
     @RequestMapping(value = "/dept/update",method = RequestMethod.POST)
     public Object update(@RequestBody Dept dept){
-        try {
-            return deptService.update(dept);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return -1;
+        return deptService.update(dept);
+    }
+
+
+    @RequestMapping(value = "/ticket/save",method = RequestMethod.POST)
+    public Object ticketSave(@RequestBody Ticket ticket){
+        System.out.println(ticket);
+//        return deptService.ticketSave(ticket);  消峰处理
+        deptService.ticketSaveTask(ticket);
+        return null;
     }
 
     public Object listFail(){

@@ -81,6 +81,12 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
 
+        <!-- 分布式事务-->
+        <dependency>
+            <groupId>user.zc</groupId>
+            <artifactId>dist-transaction</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

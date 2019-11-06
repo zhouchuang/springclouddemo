@@ -20,4 +20,7 @@ public interface LogsClientService {
 
     @PostMapping("/logs/insert")
     public  Boolean insert(Logs logs);
+
+    @PostMapping("/logs/tcctest")
+    public  Boolean tcctest(Logs logs);
 }

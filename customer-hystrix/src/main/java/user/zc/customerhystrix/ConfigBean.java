@@ -37,16 +37,17 @@ public class ConfigBean {
     }
 
 
-    @Bean
+    //序列号改为fastjson
+    /*@Bean
     public HttpMessageConverters fastJsonHttpMessageConverters(){
         //1.需要定义一个convert转换消息的对象;
         FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
         //2:添加fastJson的配置信息;
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
-        /**
+        *//**
          * TODO 第一个SerializerFeature.PrettyFormat可以省略，毕竟这会造成额外的内存消耗和流量，第二个是用来指定当属性值为null是是否输出：pro:null
          　　　　　 * SerializerFeature.SkipTransientField
-         */
+         *//*
         fastJsonConfig.setSerializerFeatures(SerializerFeature.WriteMapNullValue);
         //3处理中文乱码问题
         List<MediaType> fastMediaTypes = new ArrayList<>();
@@ -56,7 +57,7 @@ public class ConfigBean {
         fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);
         HttpMessageConverter<?> converter = fastJsonHttpMessageConverter;
         return new HttpMessageConverters(converter);
-    }
+    }*/
 
 
 }

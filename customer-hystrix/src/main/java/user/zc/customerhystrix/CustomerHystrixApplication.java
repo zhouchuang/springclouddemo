@@ -11,9 +11,9 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients(basePackages ={"user.zc.api","user.zc.apitcc"})
-@ComponentScan(basePackages = {"user.zc.api","user.zc.apitcc","user.zc.customerhystrix"})
-@RibbonClient(name="PROVIDERTCC",configuration = MyRuleConfig.class)
-@EnableDistributedTransaction
+@ComponentScan(basePackages = {"user.zc.api","user.zc.apitcc","user.zc.customerhystrix","user.zc.distdeploy"})
+//@RibbonClient(name="PROVIDERTCC",configuration = MyRuleConfig.class)
+//@EnableDistributedTransaction
 public class CustomerHystrixApplication {
 
     public static void main(String[] args) {

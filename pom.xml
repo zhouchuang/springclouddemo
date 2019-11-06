@@ -16,7 +16,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit.version>4.12</junit.version>
         <log4j.version>1.2.17</log4j.version>
-        <lombok.version>1.16.18</lombok.version>
+        <lombok.version>1.18.0</lombok.version>
     </properties>
 
     <dependencies>
@@ -24,6 +24,11 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.15</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 
@@ -85,6 +90,27 @@
                 <artifactId>api-tcc</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
+            <!--这里加上这个是因为tc启动会包netty版本兼容错误 java.lang.NoSuchMethodError: io.netty.buffer.ByteBufInputStream.<init>(Lio/n-->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-common</artifactId>
+                <version>4.1.31.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-transport</artifactId>
+                <version>4.1.31.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-buffer</artifactId>
+                <version>4.1.31.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>user.zc</groupId>
+                <artifactId>dist-transaction</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -101,8 +127,12 @@
         <module>api-tcc</module>
         <module>dashboard</module>
         <module>provider-hystrix</module>
+        <module>provider-hystrix-01</module>
         <module>provider-hystrix-tcc</module>
-        <module>tx-manager</module>
+        <module>zuul</module>
+        <module>dist-deploy</module>
+        <module>redis-cluster-demo</module>
+        <module>zookeeperdemo</module>
     </modules>
 
     <build>

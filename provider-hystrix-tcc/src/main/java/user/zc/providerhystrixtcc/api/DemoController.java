@@ -47,13 +47,14 @@ public class DemoController {
 
     @RequestMapping(value = "/logs/insert",method = RequestMethod.POST)
     public Boolean insert(@RequestBody Logs logs){
-        try {
-            return  logsService.insert(logs);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
+        return  logsService.insert(logs);
     }
+
+    @RequestMapping(value = "/logs/tcctest",method = RequestMethod.POST)
+    public Boolean tcctest(@RequestBody Logs logs){
+        return  logsService.tcctest(logs);
+    }
+
 
     public Object listFail(){
         return null;

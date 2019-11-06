@@ -1,9 +1,6 @@
 package user.zc.providerhystrixtcc.dao;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import user.zc.apitcc.entities.Logs;
 
 import java.util.List;
@@ -15,4 +12,7 @@ public interface LogsDao {
 
     @Insert({"insert into logs(id,type,json,time,tablename) values(#{id},#{type},#{json},#{time},#{tablename})"})
     Boolean insert(Logs logs);
+
+    @Delete({"delete logs where id  = #{id}"})
+    Boolean delete(Long id);
 }
